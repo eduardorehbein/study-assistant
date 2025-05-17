@@ -1,6 +1,8 @@
 # Assistente de Estudos
 
-Este projeto é um Assistente de Estudos interativo que gera um calendário de estudos personalizado com base no tema e no tempo disponível informado pelo usuário. O calendário é salvo automaticamente em um arquivo CSV na pasta `results`, facilitando sua importação em ferramentas de visualização de tabelas como o Google Sheets ou o Excel.
+Este projeto consiste em um Assistente de Estudos interativo que gera um calendário de estudos personalizado com base no tema e no tempo disponível para estudos informado pelo usuário. O calendário é salvo automaticamente em um arquivo CSV na pasta `results`, facilitando sua importação em ferramentas de visualização de tabelas como Google Sheets ou Excel.
+
+O funcionamento do sistema se dá através do trabalho de dois agentes: o primeiro é responsável pela montagem de um plano de ensino e o segundo pela geração do calendário de estudos.
 
 ## Propósito
 O Assistente de Estudos foi criado para ajudar estudantes e autodidatas a organizarem seus estudos de forma eficiente, utilizando inteligência artificial para planejar sessões de estudo personalizadas.
@@ -55,4 +57,9 @@ O Assistente de Estudos foi criado para ajudar estudantes e autodidatas a organi
 7. Siga as instruções na tela.
 
 ## Resultados
-O calendário de estudos gerado será salvo automaticamente na pasta `results` com o nome do tema escolhido. Como resultado intermediário do processo, pode-se visualizar no terminal o plano de ensino gerado pelo primeiro agente do sistema, que serve como base para a montagem do calendário.
+O calendário de estudos gerado é salvo automaticamente na pasta `results` com o nome do tema escolhido. Como resultado intermediário do processo, pode-se visualizar no terminal o plano de ensino gerado pelo primeiro agente do sistema, que serve como base para a montagem do calendário, e o resultado final em CSV.
+
+## Observações e futuras melhorias
+Durante a execução do projeto, aproveitei para experimentar o refinamento de prompts com o Google AI Studio e a geração de código através de ferramentas de vibe coding. Tal abordagem foi muito útil para enriquecer meus conhecimentos a respeito de IA no geral. Apesar disso, o sistema acabou sendo desenvolvido com a biblioteca `google-generativeai` ao invés da `google-adk`. 
+
+Sendo assim, pretendo continuar o projeto, primeiramente trocando de biblioteca. Na sequência, pretendo adicionar a busca do Google na construção do plano de ensino, assim como é especificado no [prompt do agente planejador de conteúdo](prompts/content_planner.md). Por fim, desejo aumentar o sistema, adicionando um agente orquestrador e agentes especialistas que ajudem o estudante a trabalhar cada sessão do calendário de estudos individualmente.
