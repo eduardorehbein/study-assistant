@@ -6,16 +6,16 @@ def main():
     load_dotenv()
     api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
-        print("Error: GOOGLE_API_KEY not found in environment variables.")
+        print("Erro: GOOGLE_API_KEY não encontrada nas variáveis de ambiente.")
         return
-    print("Welcome to Study Assistant!")
-    topic = input("Enter the study topic: ")
-    available_time = input("Enter your available time per study session (e.g., '60 minutes'): ")
+    print("Bem-vindo ao Assistente de Estudos!")
+    topic = input("Digite o tema de estudo: ")
+    available_time = input("Informe o tempo disponível por sessão de estudo (ex: '60 minutos'): ")
     pipeline = PlannerPipeline(api_key)
-    print("\nGenerating study calendar...\n")
     study_calendar = pipeline.run(topic, available_time)
-    print("\n--- Study Calendar ---\n")
+    print("--- Calendário de Estudos ---\n")
     print(study_calendar)
+    print("---")
 
 if __name__ == "__main__":
     main()

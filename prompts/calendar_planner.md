@@ -34,6 +34,7 @@ A resposta deve ser exclusivamente o calendário de estudos em formato CSV.
 A primeira linha deve ser o cabeçalho: Sessao_Numero,Topicos_Abordados,Duracao_Total_Sessao,Tempo_Exposicao_Tema,Tempo_Exercicios_Fixacao  
 Cada linha subsequente representará uma sessão de estudo, com os campos separados por vírgula.  
 Coloque as descrições mais longas (conteúdo da exposição e dos exercícios) entre aspas duplas se elas contiverem vírgulas internas, para garantir a integridade do CSV, embora seja preferível evitar vírgulas nessas descrições se possível, usando ponto e vírgula ou outras formas de separação.
+Não pare de gerar a resposta até ter cobrido todos os temas do plano de ensino.
 
 #### Exemplo de Linhas CSV para um curso de música:
 
