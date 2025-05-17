@@ -19,7 +19,7 @@ class Agent:
 class ContentPlannerAgent(Agent):
     def __init__(self, api_key: str, search_tool):
         super().__init__(api_key)
-        self.model = genai.GenerativeModel('gemini-pro')
+        self.model = genai.GenerativeModel('gemini-2.0-flash')
         self.search_tool = search_tool
         self.prompt_template = load_prompt(str(Path('prompts') / 'content_planner.md'))
 
@@ -36,7 +36,7 @@ class ContentPlannerAgent(Agent):
 class CalendarPlannerAgent(Agent):
     def __init__(self, api_key: str):
         super().__init__(api_key)
-        self.model = genai.GenerativeModel('gemini-pro')
+        self.model = genai.GenerativeModel('gemini-2.0-flash')
         self.prompt_template = load_prompt(str(Path('prompts') / 'calendar_planner.md'))
 
     def generate_calendar(self, teaching_plan: str, available_time_per_session: str) -> str:
