@@ -1,10 +1,8 @@
 from core.agents import ContentPlannerAgent, CalendarPlannerAgent
-from tools.search_tool import SearchTool
 
 class PlannerPipeline:
     def __init__(self, api_key: str):
-        self.search_tool = SearchTool()
-        self.content_planner_agent = ContentPlannerAgent(api_key, self.search_tool)
+        self.content_planner_agent = ContentPlannerAgent(api_key)
         self.calendar_planner_agent = CalendarPlannerAgent(api_key)
 
     def run(self, topic: str, available_time_per_session: str) -> str:

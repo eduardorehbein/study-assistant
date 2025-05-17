@@ -17,15 +17,13 @@ class Agent:
         genai.configure(api_key=api_key)
 
 class ContentPlannerAgent(Agent):
-    def __init__(self, api_key: str, search_tool):
+    def __init__(self, api_key: str):
         super().__init__(api_key)
         self.model = genai.GenerativeModel('gemini-2.0-flash')
-        self.search_tool = search_tool
         self.prompt_template = load_prompt(str(Path('prompts') / 'content_planner.md'))
 
     def generate_plan(self, topic: str) -> str:
-        search_results = self.search_tool.execute_search(topic)
-        prompt = f"{self.prompt_template}\n\nTopic: {topic}\n\nSearch Results: {search_results}"
+        prompt = f"{self.prompt_template}\n#### Tema: {topic}"
         try:
             response = self.model.generate_content(prompt)
             return response.text.strip() if hasattr(response, 'text') else str(response)
