@@ -1,9 +1,9 @@
 from core.agents import ContentPlannerAgent, CalendarPlannerAgent
 
 class PlannerPipeline:
-    def __init__(self, api_key: str):
-        self.content_planner_agent = ContentPlannerAgent(api_key)
-        self.calendar_planner_agent = CalendarPlannerAgent(api_key)
+    def __init__(self, ):
+        self.content_planner_agent = ContentPlannerAgent()
+        self.calendar_planner_agent = CalendarPlannerAgent()
 
     def run(self, topic: str, available_time_per_session: str) -> str:
         print("\nGerando plano de estudos...")

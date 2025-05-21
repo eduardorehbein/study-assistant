@@ -12,7 +12,7 @@ def main():
     print("Bem-vindo ao Assistente de Estudos!")
     topic = input("Digite o tema de estudo: ")
     available_time = input("Informe o tempo disponível por sessão de estudo (ex: '60 minutos'): ")
-    pipeline = PlannerPipeline(api_key)
+    pipeline = PlannerPipeline()
     study_calendar = pipeline.run(topic, available_time)
     print("--- Calendário de Estudos ---\n")
     print(study_calendar)
