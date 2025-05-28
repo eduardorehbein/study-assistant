@@ -59,7 +59,5 @@ O Assistente de Estudos foi criado para ajudar estudantes e autodidatas a organi
 ## Resultados
 O calendário de estudos gerado é salvo automaticamente na pasta `results` com o nome do tema escolhido. Como resultado intermediário do processo, pode-se visualizar no terminal o plano de ensino gerado pelo primeiro agente do sistema, que serve como base para a montagem do calendário, e o resultado final em CSV.
 
-## Observações e futuras melhorias
-Durante a execução do projeto, aproveitei para experimentar o refinamento de prompts com o Google AI Studio e a geração de código através de ferramentas de vibe coding. Tal abordagem foi muito útil para enriquecer meus conhecimentos a respeito de IA no geral. Apesar disso, o sistema acabou sendo desenvolvido com a biblioteca `google-generativeai` ao invés da `google-adk`. 
-
-Sendo assim, pretendo continuar o projeto, primeiramente trocando de biblioteca. Na sequência, pretendo adicionar a busca do Google na construção do plano de ensino, assim como é especificado no [prompt do agente planejador de conteúdo](prompts/content_planner.md). Por fim, desejo aumentar o sistema, adicionando um agente orquestrador e agentes especialistas que ajudem o estudante a trabalhar cada sessão do calendário de estudos individualmente.
+## Futuras melhorias
+Pretendo aumentar o sistema, adicionando um agente orquestrador e agentes especialistas que ajudem o estudante a trabalhar cada sessão do calendário de estudos individualmente.
