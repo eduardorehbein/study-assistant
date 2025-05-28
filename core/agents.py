@@ -43,6 +43,7 @@ class ContentPlannerAgent:
             session_service=session_service
         )
         content = genai_types.Content(
+            role="user",
             parts=[genai_types.Part.from_text(text=prompt)])
 
         full_response = ""
@@ -94,6 +95,7 @@ class CalendarPlannerAgent:
             session_service=session_service
         )
         content = genai_types.Content(
+            role="user",
             parts=[genai_types.Part.from_text(text=prompt)])
 
         full_response = ""
