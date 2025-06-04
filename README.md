@@ -61,3 +61,36 @@ O calendário de estudos gerado é salvo automaticamente na pasta `results` com 
 
 ## Futuras melhorias
 Pretendo aumentar o sistema, adicionando um agente orquestrador e agentes especialistas que ajudem o estudante a trabalhar cada sessão do calendário de estudos individualmente.
+
+## Running the Web Interface (Flask)
+
+To run the Study Assistant with the new Flask web interface, follow these steps:
+
+1.  **Ensure Dependencies are Installed:**
+    If you haven't already, install the required Python packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2.  **Set Up Environment Variables:**
+    The application requires certain environment variables to be set. Create a file named `.env` in the root directory of the project and add the following:
+
+    ```env
+    GOOGLE_API_KEY="YOUR_GOOGLE_API_KEY_HERE"
+    FLASK_SECRET_KEY="YOUR_FLASK_SECRET_KEY_HERE"
+    # You can generate a good secret key using: python -c 'import secrets; print(secrets.token_hex(16))'
+    ```
+    Replace `"YOUR_GOOGLE_API_KEY_HERE"` with your actual Google API Key.
+    Replace `"YOUR_FLASK_SECRET_KEY_HERE"` with a strong, random string. This key is used by Flask for session management.
+
+3.  **Run the Flask Application:**
+    Execute the `app.py` file using Python:
+    ```bash
+    python app.py
+    ```
+
+4.  **Access in Browser:**
+    Once the server is running (you should see output similar to `* Running on http://127.0.0.1:5000/`), open your web browser and navigate to:
+    [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+    You should see the Study Assistant input form. Fill in the study theme and available time, then submit to get your personalized study plan and calendar. You will also be able to download the calendar as a CSV file from the results page.
