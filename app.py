@@ -29,15 +29,15 @@ def index():
 @app.route('/generate', methods=['POST'])
 def generate():
     study_theme = request.form.get('study_theme')
-    study_time_days_str = request.form.get('study_time')
+    study_time_minutes_str = request.form.get('study_time')
 
-    if not study_theme or not study_time_days_str:
+    if not study_theme or not study_time_minutes_str:
         session['error_message'] = "Ambos os campos são obrigatórios."
         return redirect(url_for('index'))
 
     try:
-        study_time_days = int(study_time_days_str)
-        if study_time_days <= 0:
+        study_time_minutes = int(study_time_minutes_str)
+        if study_time_minutes <= 0:
             session['error_message'] = "O tempo disponível deve ser um número positivo."
             return redirect(url_for('index'))
     except ValueError:
@@ -45,11 +45,8 @@ def generate():
         return redirect(url_for('index'))
 
     # Construct the time_available string for the pipeline.
-    # The pipeline's CalendarPlannerAgent expects a string describing session duration.
-    # For now, we'll adapt the "days" input. This might need refinement based on agent's prompt.
-    # Example: "10 days total" or adapt to "X hours per day if total days is Y"
-    # For simplicity, let's assume the agent can interpret "N days" as total duration for planning.
-    time_available_string = f"{study_time_days} dias"
+    # Agora, passamos minutos por sessão para o pipeline.
+    time_available_string = f"{study_time_minutes} minutos"
 
     try:
         pipeline = PlannerPipeline()
