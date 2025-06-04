@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente de Estudos</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover { background-color: #0056b3; }
+        .error-message { color: red; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Assistente de Estudos</h1>
+
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+
+        <form action="{{ url_for('generate') }}" method="post">
+            <div>
+                <label for="study_theme">Tema de Estudo:</label>
+                <input type="text" id="study_theme" name="study_theme" required>
+            </div>
+            <div>
+                <label for="study_time">Tempo Disponível em dias:</label>
+                <input type="number" id="study_time" name="study_time" required min="1">
+            </div>
+            <div>
+                <button type="submit">Gerar Plano de Estudos</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

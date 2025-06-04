@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Plano de Estudos - Assistente de Estudos</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap; /* Ensure long lines wrap */
+            word-wrap: break-word; /* Break words if necessary */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th { background-color: #f0f0f0; }
+        .download-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .download-link:hover { background-color: #218838; }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            margin-right: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .back-link:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Seu Plano de Estudos Personalizado</h1>
+
+        <h2>Plano de Ensino</h2>
+        <pre>{{ syllabus }}</pre>
+
+        <h2>Calendário de Estudos</h2>
+        {% if calendar_data %}
+            {% set lines = calendar_data.strip().split('\n') %}
+            {% if lines %}
+                {% set header = lines[0].split(',') %}
+                {% set rows = [] %}
+                {% for i in range(1, lines|length) %}
+                    {% if lines[i] %} {# Ensure line is not empty before splitting #}
+                        {% set _ = rows.append(lines[i].split(',')) %}
+                    {% endif %}
+                {% endfor %}
+
+                <table>
+                    <thead>
+                        <tr>
+                            {% for col_header in header %}
+                                <th>{{ col_header.strip() }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                {% for cell in row %}
+                                    <td>{{ cell.strip() }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ url_for('download_csv') }}" class="download-link">Baixar Calendário (CSV)</a>
+            {% else %}
+                <p>Não foi possível gerar o calendário.</p>
+            {% endif %}
+        {% else %}
+            <p>Não há dados de calendário para exibir.</p>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}" class="back-link">Voltar</a>
+    </div>
+</body>
+</html>
